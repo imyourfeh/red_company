@@ -1,0 +1,765 @@
+.banner-cookies {
+    position: fixed; /* Mantém a barra fixa mesmo ao rolar a página */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 32, 44, 0.95); /* Fundo escuro com leve transparência */
+    color: #ffffff;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Garante que fique sobre todos os outros elementos */
+    font-size: 14px;
+}
+
+/* Botão de aceite */
+.btn-cookies {
+    background-color: #E52E2E;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap; /* Impede que o texto do botão quebre em duas linhas */
+    transition: background-color 0.3s ease;
+}
+
+.btn-cookies:hover {
+    background-color: #941919;
+}
+
+/* Classe utilitária para ocultar o banner */
+.oculto {
+    display: none !important;
+
+}  
+
+/* ==========================================================================
+   Design System & Variáveis Global
+   ========================================================================== */
+:root {
+    --primary: #c81d25;
+    --primary-dark: #99151b;
+    --primary-light: #f8d7da;
+    --dark: #121212;
+    --dark-surface: #1e1e1e;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-600: #6c757d;
+    --gray-800: #343a40;
+    --white: #ffffff;
+    
+    --font-main: 'Inter', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+
+    --transition: all 0.3s ease-in-out;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+    --shadow-lg: 0 16px 32px rgba(0,0,0,0.15);
+    --radius: 8px;
+}
+
+/* Reset Moderno */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--gray-800);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   Header & Navbar (Glassmorphism & Menu Hamburger 100% CSS)
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-badge {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(200, 29, 37, 0.3);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary);
+    letter-spacing: 1.5px;
+}
+
+.brand-sub {
+    font-size: 10px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--gray-800);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary);
+    background-color: rgba(200, 29, 37, 0.05);
+}
+
+.btn-primary-outline {
+    text-decoration: none;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-primary-outline:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Oculta Checkbox para controle Mobile */
+.menu-toggle-checkbox {
+    display: none;
+}
+
+.mobile-toggle {
+    display: none;
+    font-size: 22px;
+    color: var(--gray-800);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Navegação Lateral Direita (Side Dots Nav)
+   ========================================================================== */
+.side-dots-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.side-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.side-link .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.side-link:hover .dot {
+    background-color: var(--primary);
+    transform: scale(1.3);
+}
+
+.side-link::before {
+    content: attr(data-title);
+    position: absolute;
+    right: 22px;
+    background: var(--dark);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.side-link:hover::before {
+    opacity: 1;
+    right: 28px;
+}
+
+/* ==========================================================================
+   Hero Section / Slider (100% CSS Scroll Snap)
+   ========================================================================== */
+.hero-slider {
+    position: relative;
+    height: 85vh;
+    min-height: 550px;
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+}
+
+.slider-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.badge-subtitle {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.slide-content h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.slide-content h1 span, .slide-content h1 strong {
+    font-weight: 700;
+    color: var(--white);
+}
+
+.slide-content h1 em {
+    font-style: italic;
+    color: #ff8a8e;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--gray-200);
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-hero-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(200, 29, 37, 0.4);
+}
+
+.btn-hero-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-hero-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.btn-hero-secondary:hover {
+    background: var(--white);
+    color: var(--dark);
+}
+
+/* Pontos de Navegação do Slider */
+.slider-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transition: var(--transition);
+}
+
+.slider-dots .dot:hover {
+    background: var(--white);
+    transform: scale(1.2);
+}
+
+/* ==========================================================================
+   Barra de Estatísticas
+   ========================================================================== */
+.stats-bar {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 35px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-300);
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Seção de Produtos e Cards
+   ========================================================================== */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(200, 29, 37, 0.2);
+}
+
+.card-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.card-badge {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.card-badge.highlight {
+    background: var(--primary);
+}
+
+.card-image h3 {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.card-description {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--gray-200);
+}
+
+.tech-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.tech-tag i {
+    margin-right: 5px;
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   Contato Section & Form
+   ========================================================================== */
+.contact-section {
+    background-color: var(--gray-100);
+    padding: 80px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.contact-info h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    color: var(--gray-600);
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detail-item i {
+    width: 45px;
+    height: 45px;
+    background: var(--white);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-form {
+    background: var(--white);
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(200, 29, 37, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--dark);
+    color: var(--white);
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: var(--primary);
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: var(--gray-600);
+    padding: 25px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Botão Flutuante */
+.floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    transition: var(--transition);
+}
+
+.floating-btn:hover {
+    background-color: var(--primary);
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Responsividade & Funcionalidades CSS Puramente Nativas
+   ========================================================================== */
+@media (max-width: 992px) {
+    .contact-grid
+
+    /* Container do Banner */
+.banner-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 280px;               /* Tamanho compacto */
+  background-color: #0F172A; /* Azul escuro / Fundo principal */
+  color: #F8FAFC;            /* Texto claro */
+  padding: 16px;
+  border-radius: 16px;        /* Bordas arredondadas */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra marcante atrás */
+  border: 1px solid #475569;  /* Borda sutil de apoio */
+  z-index: 9999;
+  font-family: sans-serif;
+  
+  /* Animação suave para sumir */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.banner-box p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #F8FAFC;
+}
+
+/* Botões */
+.banner-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  background-color: #E52E2E; /* Vermelho destacado */
+  color: #F8FAFC;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;       /* Botão bem redondo */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2563EB; /* Transição para o azul ao passar o mouse */
+}
+
+/* Classe aplicada via JS para fechar */
+.banner-box.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+}

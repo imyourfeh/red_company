@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDCOMPANY | Soluções em Tecnologia da Informação</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script src="chatbot.js"></script>
+<script>
+  // Inicializa o chatbot apontando para a sua base de dados extra em JSON
+  initChatbot({
+    jsonUrl: 'minha-base-dados.json'
+  });
+</script>
+
+    <!-- Header / Navegação -->
+    <header class="navbar" id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-badge">R</div>
+                <div class="logo-text">
+                    <span class="brand-name">REDCOMPANY</span>
+                    <span class="brand-sub">Tecnologia da Informação</span>
+                </div>
+            </a>
+
+            <!-- Checkbox Hack para Menu Mobile sem JS -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="mobile-toggle" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <nav class="nav-links" id="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#produtos" class="nav-link">Soluções</a></li>
+                    <li><a href="#empresa" class="nav-link">A Empresa</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><a href="#area-cliente" class="btn-primary-outline">Área do Cliente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Side Anchor Navigation -->
+    <aside class="side-dots-nav">
+        <a href="#hero" class="side-link" data-title="Início"><span class="dot"></span></a>
+        <a href="#produtos" class="side-link" data-title="Produtos"><span class="dot"></span></a>
+        <a href="#empresa" class="side-link" data-title="Sobre Nós"><span class="dot"></span></a>
+        <a href="#contato" class="side-link" data-title="Contato"><span class="dot"></span></a>
+    </aside>
+
+    <!-- Hero / Slider Section (Carrossel 100% CSS) -->
+    <section id="hero" class="hero-slider">
+        <div class="slider-wrapper">
+            
+            <!-- Slide 1 -->
+            <div id="slide-1" class="slide" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="badge-subtitle">Seja bem-vindo!</span>
+                    <h1>Somos uma <span>empresa de TI</span> que trabalha para o <em>sucesso</em> do seu <strong>negócio</strong></h1>
+                    <p>... há mais de <strong>10 anos</strong> gerando valor real e inovação continuada para nossos clientes.</p>
+                    <div class="hero-actions">
+                        <a href="#empresa" class="btn-hero-primary">Conheça Nossa História <i class="fas fa-arrow-right"></i></a>
+                        <a href="#produtos" class="btn-hero-secondary">Nossos Produtos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div id="slide-2" class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="badge-subtitle">Transformação Digital</span>
+                    <h1>Sistemas em Nuvem com <span>Alta Performance</span> e Segurança</h1>
+                    <p>Potencialize a gestão comercial e a tomada de decisões com nossa suíte de softwares executivos.</p>
+                    <div class="hero-actions">
+                        <a href="#produtos" class="btn-hero-primary">Explorar Soluções <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pontos de Navegação do Slider (CSS Anchor Scroll) -->
+        <div class="slider-dots">
+            <a href="#slide-1" class="dot" aria-label="Slide 1"></a>
+            <a href="#slide-2" class="dot" aria-label="Slide 2"></a>
+        </div>
+    </section>
+
+    <!-- Stats / Metrics Section -->
+    <section class="stats-bar" id="empresa">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">+10</span>
+                <span class="stat-label">Anos de Mercado</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">+500</span>
+                <span class="stat-label">Projetos Entregues</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">SLA de Disponibilidade</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">+100k</span>
+                <span class="stat-label">Requisições de API/Dia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Produtos -->
+    <section id="produtos" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Produtos</h2>
+                <p>Ecossistema completo de ferramentas desenhadas para escalar suas operações comerciais.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80');">
+                        <span class="card-badge">WM-2.0</span>
+                        <h3>GESTOR DE VENDAS</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Aplicação para gestão de vendas. Fácil, rápido e integrado.</p>
+                        <p class="card-description">Cotações de Vendas, Pedidos, Política Comercial, Workflow, Clientes, Finanças, Relatórios, Notas Fiscais e integração direta com ERP.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-server"></i> ON-PREMISE</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80');">
+                        <span class="card-badge">WM-2.0</span>
+                        <h3>CADASTRO DE CLIENTE</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Aplicação para manutenção passo a passo de clientes.</p>
+                        <p class="card-description">Validação automatizada junto à Receita Federal, Sintegra, Simples Nacional e Suframa. Controle por Workflow e Anexos.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-server"></i> ON-PREMISE</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80');">
+                        <span class="card-badge highlight">CLOUD</span>
+                        <h3>API SERVICES</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Conjunto de APIs em Cloud para integrar com suas aplicações.</p>
+                        <p class="card-description">Consultas automatizadas de CNPJ, Sintegra, Suframa, CEP e regras fiscais prontas para consumo por qualquer software moderno.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-cloud"></i> CLOUD / API</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80');">
+                        <span class="card-badge">MOBILE</span>
+                        <h3>CRM EXECUTIVO</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Facilidade na gestão de clientes e vendas em um só APP.</p>
+                        <p class="card-description">Acompanhe funil de vendas, metas da equipe, histórico de contatos e compromissos diretamente do smartphone ou navegador.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-mobile-alt"></i> WEB / APP</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80');">
+                        <span class="card-badge">ANALYTICS</span>
+                        <h3>B.I. DASHBOARDS</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Painéis e Relatórios Inteligentes para decisões ágeis.</p>
+                        <p class="card-description">Transforme grandes volumes de dados operacionais em gráficos dinâmicos e inteligência estratégica de mercado.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-chart-line"></i> BUSINESS INTELLIGENCE</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80');">
+                        Aqui está o código HTML concluído com as seções restantes (**Serviços**, **A Empresa/Sobre**, **Contato**, **Área do Cliente/Login Modal** e o **Footer**), além do script JavaScript ao final para o funcionamento do banner de cookies e interações da página.
+
+```html
+                        <span class="card-badge">TAILOR-MADE</span>
+                        <h3>SISTEMAS SOB MEDIDA</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-subtitle">Desenvolvimento de Software Personalizado.</p>
+                        <p class="card-description">Mapeamos as necessidades exclusivas da sua empresa e desenvolvemos plataformas robustas, escaláveis e sob medida.</p>
+                        <div class="card-footer">
+                            <span class="tech-tag"><i class="fas fa-code"></i> CUSTOM SOFTWARE</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Serviços -->
+    <section id="servicos" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Serviços</h2>
+                <p>Consultoria e suporte técnico especializado para a transformação digital do seu negócio.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Integração de Sistemas (ERP)</h3>
+                    <p>Conectamos suas ferramentas legadas com novos softwares de gestão através de APIs seguras e eficientes.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Migração para Nuvem</h3>
+                    <p>Migre suas infraestruturas locais para servidores em nuvem com máxima segurança e mínimo downtime.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte & Treinamento</h3>
+                    <p>Atendimento especializado contínuo e treinamento de equipes para garantir a eficiência das operações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section A Empresa -->
+    <section id="empresa-detalhes" class="section-padding">
+        <div class="container company-container">
+            <div class="company-text">
+                <span class="badge-subtitle">Sobre a REDCOMPANY</span>
+                <h2>Inovação constante focada no crescimento do seu negócio</h2>
+                <p>Com mais de uma década de atuação no mercado corporativo de TI, a REDCOMPANY entrega soluções em software que combinam alta performance, segurança de dados e facilidade de uso.</p>
+                <p>Nosso compromisso é otimizar processos comerciais e operacionais, fornecendo ferramentas inteligentes e integração ponta a ponta com sistemas legados e em nuvem.</p>
+            </div>
+            <div class="company-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Equipe REDCOMPANY em reunião de trabalho">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contato -->
+    <section id="contato" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Entre em Contato</h2>
+                <p>Fale com nossos especialistas e descubra como podemos impulsionar sua empresa.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Estamos na Jd Nova Europa - Campinas/SP CEP 13040-093</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@redcompany.com.br</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>+55 (11) 4003-0000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Seu E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Assunto">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Sua Mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-hero-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Área do Cliente (Acesso) -->
+    <section id="area-cliente" class="section-padding">
+        <div class="container text-center">
+            <h2>Área do Cliente</h2>
+            <p>Acesse o portal para gerenciar suas licenças, abrir chamados de suporte e visualizar relatórios.</p>
+            <a href="#" class="btn-hero-primary" style="margin-top: 20px; display: inline-block;">Acessar Portal do Cliente</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>REDCOMPANY</h3>
+                <p>Soluções em Tecnologia da Informação que impulsionam empresas para o futuro digital.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#produtos">Soluções</a></li>
+                    <li><a href="#empresa">A Empresa</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Redes Sociais</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 REDCOMPANY. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="banner-cookies">
+    <p>Usamos cookies para melhorar sua experiência no site.</p>
+    <button id="btn-aceitar" class="btn-cookies">Aceitar</button>
+</div>
+
+
+</body>
+</html>
