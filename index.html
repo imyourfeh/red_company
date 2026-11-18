@@ -38,15 +38,28 @@
             </a>
 
             <!-- Checkbox Hack para Menu Mobile sem JS -->
-            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
-            <label for="menu-toggle" class="mobile-toggle" aria-label="Abrir Menu">
-                <i class="fas fa-bars"></i>
-            </label>
+          <input type="checkbox" id="menu-toggle" hidden>
+<label for="menu-toggle" class="mobile-toggle" title="Abrir Menu">
+    <i class="fas fa-bars"></i>
+</label>
 
             <nav class="nav-links" id="nav-menu">
                 <ul>
                     <li><a href="#hero" class="nav-link active">Home</a></li>
-                    <li><a href="#produtos" class="nav-link">Soluções</a></li>
+                    
+                    <!-- Item com Submenu (Lista Encadeada) -->
+                    <li class="has-submenu">
+                        <a href="#produtos" class="nav-link">Soluções <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 4px;"></i></a>
+                       <ul class="submenu">
+    <li><a href="#gestor-vendas">Gestor de Vendas</a></li>
+    <li><a href="#cadastro-cliente">Cadastro de Cliente</a></li>
+    <li><a href="#api-services">API Services</a></li>
+    <li><a href="#crm-executivo">CRM Executivo</a></li>
+    <li><a href="#bi-dashboards">B.I. Dashboards</a></li>
+    <li><a href="#sistemas-sob-medida">Sistemas Sob Medida</a></li>
+</ul>
+                    </li>
+
                     <li><a href="#empresa" class="nav-link">A Empresa</a></li>
                     <li><a href="#servicos" class="nav-link">Serviços</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
@@ -56,7 +69,8 @@
         </div>
     </header>
 
-    <!-- Side Anchor Navigation -->
+    <main>
+         <!-- Side Anchor Navigation -->
     <aside class="side-dots-nav">
         <a href="#hero" class="side-link" data-title="Início"><span class="dot"></span></a>
         <a href="#produtos" class="side-link" data-title="Produtos"><span class="dot"></span></a>
@@ -136,7 +150,7 @@
 
             <div class="cards-grid">
                 <!-- Card 1 -->
-                <article class="card">
+               <article id="gestor-vendas" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge">WM-2.0</span>
                         <h3>GESTOR DE VENDAS</h3>
@@ -151,7 +165,7 @@
                 </article>
 
                 <!-- Card 2 -->
-                <article class="card">
+               <article id="cadastro-cliente" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge">WM-2.0</span>
                         <h3>CADASTRO DE CLIENTE</h3>
@@ -166,7 +180,7 @@
                 </article>
 
                 <!-- Card 3 -->
-                <article class="card">
+                <article id="api-services" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge highlight">CLOUD</span>
                         <h3>API SERVICES</h3>
@@ -181,7 +195,7 @@
                 </article>
 
                 <!-- Card 4 -->
-                <article class="card">
+                <article id="crm-executivo" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge">MOBILE</span>
                         <h3>CRM EXECUTIVO</h3>
@@ -196,7 +210,7 @@
                 </article>
 
                 <!-- Card 5 -->
-                <article class="card">
+               <article id="bi-dashboards" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge">ANALYTICS</span>
                         <h3>B.I. DASHBOARDS</h3>
@@ -211,7 +225,7 @@
                 </article>
 
                 <!-- Card 6 -->
-                <article class="card">
+               <article id="sistemas-sob-medida" class="card">
                     <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80');">
 
                         <span class="card-badge">TAILOR-MADE</span>
@@ -295,7 +309,7 @@
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>Endereço</h4>
+                            <h3>Endereço</h3>
                             <p>Estamos na Jd Nova Europa - Campinas/SP CEP 13040-093</p>
                         </div>
                     </div>
@@ -303,7 +317,7 @@
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>E-mail</h4>
+                            <h3>E-mail</h3>
                             <p>contato@redcompany.com.br</p>
                         </div>
                     </div>
@@ -311,24 +325,51 @@
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>Telefone</h4>
+                            <h3>Telefone</h3>
                             <p>+55 (11) 4003-0000</p>
                         </div>
                     </div>
                 </div>
 
-                <form class="contact-form">
+                <form class="contact-form" action="#" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="text" name="nome" placeholder="Seu Nome Completo" minlength="3" maxlength="100" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Seu E-mail" required>
+                        <input type="email" name="email" placeholder="Seu E-mail Corporativo" maxlength="120" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Assunto">
+                        <input type="tel" name="telefone" placeholder="Telefone: (11) 99999-9999" 
+                               pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$" 
+                               title="Digite no formato (11) 99999-9999" required>
                     </div>
                     <div class="form-group">
-                        <textarea rows="5" placeholder="Sua Mensagem" required></textarea>
+                        <select name="solucao_interesse" required>
+                            <option value="" disabled selected>Selecione a solução de interesse...</option>
+                            <option value="gestor_vendas">Gestor de Vendas</option>
+                            <option value="cadastro_cliente">Cadastro de Cliente</option>
+                            <option value="api_services">API Services</option>
+                            <option value="crm_executivo">CRM Executivo</option>
+                            <option value="bi_dashboards">B.I. Dashboards</option>
+                            <option value="sob_medida">Sistemas Sob Medida</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-options">
+                        <span class="option-title">Porte da Empresa:</span>
+                        <label><input type="radio" name="porte_empresa" value="pequena" required> Pequena</label>
+                        <label><input type="radio" name="porte_empresa" value="media"> Média</label>
+                        <label><input type="radio" name="porte_empresa" value="grande"> Grande</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade..." minlength="10" maxlength="500" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="anexo" class="file-label">Anexar escopo ou documento (PDF/DOC):</label>
+                        <input type="file" id="anexo" name="anexo" accept=".pdf,.doc,.docx">
+                    </div>
+                    <div class="form-group form-options">
+                        <label><input type="checkbox" name="newsletter" value="sim"> Desejo receber novidades e conteúdos de TI</label>
+                        <label><input type="checkbox" name="termos" value="aceito" required> Concordo com a Política de Privacidade</label>
                     </div>
                     <button type="submit" class="btn-hero-primary">Enviar Mensagem</button>
                 </form>
@@ -344,6 +385,8 @@
             <a href="#" class="btn-hero-primary" style="margin-top: 20px; display: inline-block;">Acessar Portal do Cliente</a>
         </div>
     </section>
+    </main>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -378,7 +421,10 @@
 
     <div id="cookie-banner" class="banner-cookies">
     <p>Usamos cookies para melhorar sua experiência no site.</p>
-    <button id="btn-aceitar" class="btn-cookies">Aceitar</button>
+    <button id="btn-aceitar" type="button" class="btn-cookies" 
+            onclick="document.getElementById('cookie-banner').style.setProperty('display', 'none', 'important'); try { localStorage.setItem('cookiesAceitos', 'sim'); } catch(e) {}">
+        Aceitar
+    </button>
 </div>
 
 
