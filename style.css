@@ -763,3 +763,267 @@ footer {
 }
 
 }
+
+/* Estilização dos novos campos do formulário */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-family: var(--font-main);
+    font-size: 14px;
+    color: var(--gray-800);
+    background-color: var(--white);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(200, 29, 37, 0.1);
+}
+
+.form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--gray-800);
+}
+
+.option-title {
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: -8px;
+}
+
+.form-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.file-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--gray-800);
+}
+
+.contact-form input[type="file"] {
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.banner-cookies {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 32, 44, 0.95);
+    color: #ffffff;
+    padding: 15px 110px 15px 25px; /* Espaço extra à direita para não ficar atrás do chatbot */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   Estados Interativos (:focus e :active) para Links, Menus e Botões
+   ========================================================================== */
+
+/* Estado :focus (quando o usuário navega com a tecla Tab ou clica no elemento) */
+.nav-link:focus,
+.btn-primary-outline:focus,
+.btn-hero-primary:focus,
+.btn-hero-secondary:focus,
+.btn-cookies:focus,
+.footer-links a:focus,
+.social-icons a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+/* Estado :active (no momento exato em que o botão ou link é pressionado) */
+.nav-link:active,
+.footer-links a:active {
+    color: var(--primary-dark);
+    transform: scale(0.97);
+}
+
+.btn-primary-outline:active,
+.btn-hero-primary:active,
+.btn-hero-secondary:active,
+.btn-cookies:active {
+    transform: translateY(1px) scale(0.98);
+    filter: brightness(0.9);
+}
+
+/* ==========================================================================
+   Submenu Dropdown (:hover e :focus-within)
+   ========================================================================== */
+.nav-links ul li.has-submenu {
+    position: relative;
+}
+
+.nav-links ul.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 210px;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 1001;
+}
+
+/* Abre o submenu ao passar o mouse (:hover) ou focar com Tab (:focus-within) */
+.nav-links ul li.has-submenu:hover > ul.submenu,
+.nav-links ul li.has-submenu:focus-within > ul.submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-links ul.submenu li a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-800);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-links ul.submenu li a:hover,
+.nav-links ul.submenu li a:focus {
+    background-color: rgba(200, 29, 37, 0.06);
+    color: var(--primary);
+    padding-left: 22px;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* ==========================================================================
+   Responsividade (Breakpoints para Tablet e Smartphone)
+   ========================================================================== */
+
+/* Tablet (até 992px) */
+@media (max-width: 992px) {
+    .slide-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .cards-grid,
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .company-container,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Smartphone (até 768px) */
+@media (max-width: 768px) {
+    /* Ativa o botão hambúrguer mobile */
+    .mobile-toggle {
+        display: block;
+        font-size: 24px;
+        color: var(--gray-800);
+        cursor: pointer;
+    }
+
+    /* Esconde o menu horizontal padrão e transforma em gaveta mobile */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: var(--shadow-md);
+        padding: 20px;
+        border-top: 1px solid var(--gray-200);
+    }
+
+    /* Abre o menu quando o checkbox #menu-toggle está marcado */
+    #menu-toggle:checked ~ .nav-links {
+        display: block;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* Ajusta o submenu para abrir em bloco dentro do menu mobile */
+    .nav-links ul.submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid var(--primary);
+        padding-left: 12px;
+        margin-top: 6px;
+        width: 100%;
+    }
+
+    /* Ajusta tamanhos de fonte e grades para tela de celular */
+    .slide-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .cards-grid,
+    .services-grid,
+    .stats-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-dots-nav {
+        display: none;
+    }
+}
